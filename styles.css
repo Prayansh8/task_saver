@@ -1,0 +1,428 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f7f7f7;
+}
+
+h1 {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.task-group {
+  width: 30%;
+  float: left;
+  padding: 10px;
+  box-sizing: border-box;
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+  margin: 10px;
+  transition: transform 0.3s;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.task-group:hover {
+  transform: translateY(-5px);
+}
+
+.task-group h2 {
+  margin-top: 0;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.task-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.task-list-item {
+  margin: 10px 0;
+  padding: 10px;
+  background-color: #f4f4f4;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.task-list-item:hover {
+  background-color: #e0e0e0;
+}
+
+.create-task-button {
+  margin-top: 10px;
+  background-color: #4caf50;
+  color: #ffffff;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: 100%;
+}
+
+.create-task-button:hover {
+  background-color: #45a049;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 10% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  border-radius: 5px;
+  width: 60%;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.close-button {
+  float: right;
+  cursor: pointer;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.close-button:hover {
+  color: #f44336;
+}
+
+.edit-button,
+.delete-button {
+  background-color: #f4f4f4;
+  color: #333;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-left: 5px;
+}
+
+.edit-button:hover,
+.delete-button:hover {
+  background-color: #e0e0e0;
+}
+
+/* Additions for edit task modal */
+#edit-task-modal {
+  display: none;
+}
+
+/* ... (previous code) ... */
+
+/* ... (previous code) ... */
+/* ... (previous code) ... */
+
+.task-group {
+  /* ... (existing styles) ... */
+  display: flex;
+  flex-direction: column; /* Stack items vertically */
+}
+
+.create-task-button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+  border-radius: 4px;
+  margin-top: 10px; /* Add margin at the top */
+  align-self: flex-start; /* Align button to the left */
+  width: calc(100% - 20px); /* Adjust width to span full width minus margin */
+}
+
+/* ... (remaining styles) ... */
+/* ... (previous code) ... */
+
+.task-div {
+  width: 90%; /* Set the width to 90% */
+  margin: 0 auto; /* Center the task div within the parent */
+}
+
+/* ... (remaining styles) ... */
+/* ... (previous styles) ... */
+
+.task-list-item {
+  /* ... (existing styles) ... */
+  cursor: grab;
+  user-select: none;
+}
+
+.task-list-item:active {
+  cursor: grabbing;
+}
+
+/* ... (remaining styles) ... */
+
+/* Existing styles ... */
+
+@media screen and (max-width: 768px) {
+  .task-group {
+    width: 100%; /* Full width for task groups on smaller screens */
+    margin: 10px 0;
+  }
+
+  .create-task-button {
+    width: 100%; /* Make the button full width on smaller screens */
+  }
+
+  .task-list-item {
+    flex-direction: column; /* Stack task items vertically on smaller screens */
+    display: flex;
+    flex-direction: row;
+  }
+
+  .task-list-item > * {
+    margin: 5px 0; /* Add spacing between elements */
+  }
+
+  .modal-content {
+    width: 80%; /* Adjust the width of modals for smaller screens */
+  }
+}
+
+/* ... (remaining styles) ... */
+
+/* ... (other styles) ... */
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 10% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  border-radius: 5px;
+  width: 60%;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+
+  /* Additional styles for the edit task modal content */
+  position: relative;
+  overflow: hidden; /* Hide overflowing content */
+}
+
+.close-button {
+  float: right;
+  cursor: pointer;
+  font-size: 24px;
+  font-weight: bold;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.close-button:hover {
+  color: #f44336;
+}
+
+h2 {
+  margin-top: 0;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+form {
+  margin-top: 20px;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+input[type="text"],
+textarea {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #e0e0e0;
+  border-radius: 3px;
+  margin-bottom: 10px;
+  resize: vertical; /* Allow vertical resizing of textarea */
+}
+
+button[type="submit"] {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+button[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+/* ... (other styles) ... */
+@media screen and (max-width: 768px) {
+  .modal-content {
+    width: 80%;
+  }
+
+  input[type="text"],
+  textarea {
+    padding: 6px; /* Reduce padding for smaller screens */
+  }
+
+  button[type="submit"] {
+    padding: 6px 12px; /* Reduce padding for smaller screens */
+  }
+}
+
+/* Navbar styles */
+.navbar {
+  background-color: #333;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+}
+
+.logo {
+  font-size: 24px;
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+}
+
+/* Style the login and register links */
+#login-link,
+#register-link,
+#logout-li {
+  padding: 8px 16px;
+  border: 1px solid white;
+  border-radius: 5px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+#login-link:hover,
+#register-link:hover {
+  background-color: white;
+  color: #333;
+}
+
+/* Add more styles as needed */
+
+/* Styles for the modals */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn:hover {
+  color: black;
+}
+
+.toast {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #333;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  z-index: 9999;
+}
+.show {
+  opacity: 1;
+}
+
+.form-container {
+  width: 90%;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.form-container label {
+  font-size: 16px;
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-container input {
+  width: 98%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  font-size: 14px;
+}
+
+.form-container button {
+  background-color: #4CAF50; /* Green color */
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 3px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.form-container button:hover {
+  background-color: #45a049; /* Darker green color on hover */
+}

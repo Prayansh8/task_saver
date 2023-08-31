@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task Manager</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+  </head>
+  <body>
+    <nav class="navbar">
+      <h1 class="logo">Task Manager</h1>
+      <ul>
+        <li id="login-li" style="display: none">
+          <a href="#" id="login-link">Login</a>
+        </li>
+        <li id="register-li" style="display: none">
+          <a href="#" id="register-link">Register</a>
+        </li>
+        <li id="logout-li" style="display: none">
+          <a href="#" id="logout-link">Logout</a>
+        </li>
+        <li id="user-icon-li" style="display: none">
+          <span id="user-icon" class="fa fa-user"></span>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Login Modal -->
+    <div id="login-modal" class="modal">
+      <div class="modal-content">
+        <span class="close-button" id="login-modal-close-button">&times;</span>
+        <div class="form-container">
+          <h2>Login</h2>
+          <form id="login-form">
+            <label for="login-email">Email:</label>
+            <input type="email" id="login-email" name="email" required /><br />
+
+            <label for="login-password">Password:</label>
+            <input
+              type="password"
+              id="login-password"
+              name="password"
+              required
+            /><br />
+
+            <button type="submit">Login</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div id="register-modal" class="modal">
+      <div class="modal-content">
+        <span class="close-button" id="register-modal-close-button"
+          >&times;</span
+        >
+        <div class="form-container">
+          <h2>Register</h2>
+          <form id="registration-form">
+            <label for="reg-name">Name:</label>
+            <input type="text" id="reg-name" name="name" required /><br />
+
+            <label for="reg-email">Email:</label>
+            <input type="email" id="reg-email" name="email" required /><br />
+
+            <label for="reg-password">Password:</label>
+            <input
+              type="password"
+              id="reg-password"
+              name="password"
+              required
+            /><br />
+
+            <button type="submit">Register</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div
+        id="todo"
+        class="task-group"
+        ondrop="drop(event, 'ToDo')"
+        ondragover="allowDrop(event)"
+      >
+        <h2>To Do</h2>
+        <ul id="todo-list" class="task-list"></ul>
+        <button class="create-task-button" onclick="openTaskModal('ToDo')">
+          Create Task
+        </button>
+      </div>
+
+      <div
+        id="doing"
+        class="task-group"
+        ondrop="drop(event, 'Doing')"
+        ondragover="allowDrop(event)"
+      >
+        <h2>Doing</h2>
+        <ul id="doing-list" class="task-list"></ul>
+        <button class="create-task-button" onclick="openTaskModal('Doing')">
+          Create Task
+        </button>
+      </div>
+
+      <div
+        id="done"
+        class="task-group"
+        ondrop="drop(event, 'Done')"
+        ondragover="allowDrop(event)"
+      >
+        <h2>Done</h2>
+        <ul id="done-list" class="task-list"></ul>
+        <button class="create-task-button" onclick="openTaskModal('Done')">
+          Create Task
+        </button>
+      </div>
+
+      <div id="task-modal" class="modal">
+        <div class="modal-content">
+          <span class="close-button" id="task-close">&times;</span>
+          <form id="task-form">
+            <label for="task-title">Title:</label>
+            <input type="text" id="task-title" name="task-title" required />
+            <label for="task-description">Description:</label>
+            <textarea id="task-description" name="task-description"></textarea>
+            <input type="hidden" id="task-status" name="task-status" />
+            <button type="submit">Add Task</button>
+          </form>
+        </div>
+      </div>
+
+      <div id="edit-task-modal" class="modal">
+        <div class="modal-content">
+          <span class="close-button" id="edit-task-close-button">&times;</span>
+          <h2>Edit Task</h2>
+          <form id="edit-task-form">
+            <label for="edit-task-title">Title:</label>
+            <input
+              type="text"
+              id="edit-task-title"
+              name="edit-task-title"
+              required
+            />
+            <label for="edit-task-description">Description:</label>
+            <textarea
+              id="edit-task-description"
+              name="edit-task-description"
+            ></textarea>
+            <button type="submit">Save Changes</button>
+          </form>
+        </div>
+      </div>
+
+      <div id="task-modal" class="modal">
+        <div class="modal-content">
+          <span class="close-button" id="task-modal-close-button">&times;</span>
+          <h2 id="modal-title"></h2>
+          <p id="modal-description"></p>
+          <p id="modal-status"></p>
+        </div>
+      </div>
+
+      <!-- User Modal -->
+      <div id="user-modal" class="modal">
+        <div class="modal-content">
+          <span class="close-button" id="user-modal-close-button">&times;</span>
+          <div id="user-details">
+            <h2>User Details</h2>
+            <p><strong>Name:</strong> <span id="user-name"></span></p>
+            <p><strong>Email:</strong> <span id="user-email"></span></p>
+            <p><strong>ID:</strong> <span id="user-id"></span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="toast" class="toast"></div>
+
+    <script src="script.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+
+    <script src="firebase-config.js"></script>
+    <script src="app.js"></script>
+    <script src="PopUp.js"></script>
+    <script src="createTask.js"></script>
+    <script src="getData.js"></script>
+
+    <script>
+      function showToast(message) {
+        const toast = document.getElementById("toast");
+        toast.innerText = message;
+        toast.classList.add("show");
+
+        setTimeout(() => {
+          toast.classList.remove("show");
+        }, 4000); // Hide the toast after 3 seconds
+      }
+    </script>
+  </body>
+</html>
