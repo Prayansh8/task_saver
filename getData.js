@@ -41,7 +41,10 @@ function populateTaskLists(tasksData) {
         const editButton = document.createElement("button");
         editButton.innerHTML = '<i class="fas fa-edit"></i>';
         editButton.className = "edit-button";
-        editButton.addEventListener("click", () => openEditTaskModal(taskId)); // Implement openEditTaskModal
+        editButton.addEventListener("click", (event) => {
+          event.preventDefault();
+          openEditTaskModal(taskId);
+        }); // Implement openEditTaskModal
 
         // Create a delete button with Font Awesome icon
         const deleteButton = document.createElement("button");
