@@ -20,26 +20,38 @@ function populateTaskLists(tasksData) {
         const taskItem = document.createElement("li");
         taskItem.className = "task-list-item";
 
-        // Create a task title element
-        const taskTitle = document.createElement("span");
-        taskTitle.textContent = task.taskTitle;
-
-        // Create an edit button with Font Awesome icon
-        const editButton = document.createElement("button");
-        editButton.innerHTML = '<i class="fas fa-edit"></i>';
-        editButton.className = "edit-button";
-        editButton.addEventListener("click", () => openEditTaskModal(taskId)); // Implement openEditTaskModal
-
-        // Create a delete button with Font Awesome icon
-        const deleteButton = document.createElement("button");
-        deleteButton.innerHTML = '<i class="fas fa-trash"></i>';
-        deleteButton.className = "delete-button";
-        deleteButton.addEventListener("click", () => deleteTask(taskId)); // Implement deleteTask
-
-        // Append the elements to the task item
-        taskItem.appendChild(taskTitle);
-        taskItem.appendChild(editButton);
-        taskItem.appendChild(deleteButton);
+         // Create a container for the task title
+         const titleContainer = document.createElement("div");
+         titleContainer.className = "title-container";
+ 
+         // Create a task title element
+         const taskTitle = document.createElement("span");
+         taskTitle.textContent = task.taskTitle;
+ 
+         // Create a container for edit and delete buttons
+         const buttonContainer = document.createElement("div");
+         buttonContainer.className = "button-container";
+ 
+         titleContainer.appendChild(taskTitle);
+ 
+         // Create an edit button with Font Awesome icon
+         const editButton = document.createElement("button");
+         editButton.innerHTML = '<i class="fas fa-edit"></i>';
+         editButton.className = "edit-button";
+         editButton.addEventListener("click", () => openEditTaskModal(taskId)); // Implement openEditTaskModal
+ 
+         // Create a delete button with Font Awesome icon
+         const deleteButton = document.createElement("button");
+         deleteButton.innerHTML = '<i class="fas fa-trash"></i>';
+         deleteButton.className = "delete-button";
+         deleteButton.addEventListener("click", () => deleteTask(taskId)); // Implement deleteTask
+ 
+         // Append the edit and delete buttons to the button container
+         buttonContainer.appendChild(editButton);
+         buttonContainer.appendChild(deleteButton);
+         // Append the elements to the task item
+         taskItem.appendChild(titleContainer);
+         taskItem.appendChild(buttonContainer);
 
         taskItem.draggable = true;
         taskItem.setAttribute("data-task-id", taskId);
