@@ -209,11 +209,13 @@ button[type="submit"] {
 button[type="submit"]:hover {
   background-color: #45a049;
 }
-
+#task-form {
+  padding: 20px;
+}
 /* ... (other styles) ... */
 @media screen and (max-width: 768px) {
   .modal-content {
-    width: 80%;
+    width: 85%;
   }
 
   input[type="text"],
@@ -393,7 +395,6 @@ button[type="submit"]:hover {
 /* Media query for screens smaller than 768px */
 @media screen and (max-width: 768px) {
   .form-container {
-    width: 100%;
     padding: 20px 10px;
     box-shadow: none;
   }
@@ -407,5 +408,9 @@ button[type="submit"]:hover {
 
   .button-container {
     width: 100%;
+  }
+
+  .modal-content {
+    padding: 10px;
   }
 }
