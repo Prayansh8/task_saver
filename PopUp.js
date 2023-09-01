@@ -2,6 +2,7 @@
 const loginModal = document.getElementById("login-modal");
 const registerModal = document.getElementById("register-modal");
 const userModal = document.getElementById("user-modal");
+const seeTaskModal = document.getElementById("see-task-modal");
 
 // Get references to the links that open the modals
 const loginLink = document.getElementById("login-link");
@@ -17,7 +18,7 @@ const registerModalCloseButton = document.getElementById(
 );
 
 const userModalCloseButton = document.getElementById("user-modal-close-button");
-
+const seeTaskModalCloseButton = document.getElementById("see-task-modal-close-button")
 // Function to open a modal
 function openModal(modal) {
   modal.style.display = "flex";
@@ -37,7 +38,7 @@ registerModalCloseButton.addEventListener("click", () =>
   closeModal(registerModal)
 );
 userModalCloseButton.addEventListener("click", () => closeModal(userModal));
-
+seeTaskModalCloseButton.addEventListener("click", () => closeModal(seeTaskModal));
 function openModalT() {
   var modalT = document.getElementById("task-modal");
   modalT.style.display = "block";

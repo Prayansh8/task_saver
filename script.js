@@ -127,3 +127,25 @@ function updateTask(taskId, updatedTask) {
       showToast("Error editing data:", error);
     });
 }
+
+
+function openTaskModalBySee(taskId) {
+    const modal = document.getElementById("see-task-modal");
+    const modalTitle = modal.querySelector("#modal-title");
+    const modalDescription = modal.querySelector("#modal-description");
+    const modalStatus = modal.querySelector("#modal-status");
+  
+    // You can use taskId to fetch the relevant task details from tasksData
+    const task = tasksData[taskId];
+  
+    // Set the modal content based on the task
+    modalTitle.textContent = task.taskTitle;
+    modalDescription.textContent = task.taskDescription;
+    modalStatus.textContent = task.taskStatus;
+  
+    // Make the modal visible
+    modal.style.display = "block";
+  }
+  
+
+  

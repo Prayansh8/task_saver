@@ -403,11 +403,11 @@ button[type="submit"]:hover {
     width: 90%;
   }
   .title-container {
-    width: 100%;
+    width: 70%;
   }
 
   .button-container {
-    width: 100%;
+    width: 30%;
   }
 
   .modal-content {
