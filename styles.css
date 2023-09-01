@@ -383,7 +383,7 @@ button[type="submit"]:hover {
   .form-container {
     width: 100%;
     padding: 20px 10px;
-    box-shadow: 0;
+    box-shadow: none;
   }
 
   .form-container input{
