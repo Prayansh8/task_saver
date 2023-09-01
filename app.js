@@ -77,7 +77,6 @@ function displayUserDetails() {
   if (user) {
     userEmail.textContent = user.email;
     userName.textContent = user.displayName || "N/A"; // Use displayName or 'N/A' if not available
-    userId.textContent = user.uid;
   } else {
     userEmail.textContent = "Not logged in";
     userName.textContent = "";

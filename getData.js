@@ -78,11 +78,11 @@ taskFormDb.on(
     if (tasksData) {
       populateTaskLists(tasksData);
     } else {
-      console.log("No tasks found.");
+      showToast("No tasks found.");
     }
   },
   (error) => {
-    console.error("Error fetching tasks data:", error);
+    showToast("Error fetching tasks data:", error);
   }
 );
 
@@ -104,31 +104,9 @@ function drop(event, status) {
     // Update the task's status in the Firebase database
     const taskRef = taskFormDb.child(taskId);
     taskRef.update({ taskStatus: status }).catch((error) => {
-      console.error("Error updating task status:", error);
+      showToast("Error updating task status:", error);
     });
   } else {
-    console.error("Invalid task ID");
+    showToast("Invalid task ID");
   }
-}
-
-function createEditButton(task) {
-  const editButton = document.createElement("button");
-  editButton.className = "edit-button";
-  editButton.innerHTML = '<i class="fas fa-edit"></i>';
-  editButton.addEventListener("click", (event) => {
-    event.stopPropagation();
-    openEditTaskModal(task);
-  });
-  return editButton;
-}
-
-function createDeleteButton(task) {
-  const deleteButton = document.createElement("button");
-  deleteButton.className = "delete-button";
-  deleteButton.innerHTML = '<i class="fas fa-trash"></i>';
-  deleteButton.addEventListener("click", (event) => {
-    event.stopPropagation();
-    deleteTask(task.id);
-  });
-  return deleteButton;
 }

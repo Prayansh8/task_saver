@@ -58,7 +58,3 @@ createTaskButtons.forEach(function (button) {
 
 const taskModalCloseButton = document.getElementById("task-close");
 taskModalCloseButton.addEventListener("click", () => closeModalT());
-
-
-
-
