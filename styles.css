@@ -414,3 +414,18 @@ button[type="submit"]:hover {
     padding: 10px;
   }
 }
+
+.footer {
+  text-align: center;
+  background-color: #333;
+  color: white;
+  padding: 20px 10px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+/* CSS for the red text */
+.red-text {
+  color: red;
+}
