@@ -441,3 +441,7 @@ button[type="submit"]:hover {
     padding: 10px 5px;
   }
 }
+
+#task-description, #edit-task-description{
+  height: 100px;
+}
