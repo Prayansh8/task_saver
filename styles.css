@@ -430,6 +430,9 @@ button[type="submit"]:hover {
 .red-text {
   color: red;
 }
+.red-text:hover {
+  color: rgb(0, 160, 168);
+}
 
 
 @media only screen and (max-width: 767px) {
