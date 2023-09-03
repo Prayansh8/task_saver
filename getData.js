@@ -97,23 +97,54 @@ function allowDrop(event) {
   event.preventDefault();
 }
 
+// function drop(event, status) {
+//   event.preventDefault();
+//   const taskId = event.dataTransfer.getData("text/plain");
+
+//   if (taskId) {
+//     // Update the task's status in the tasksData object
+//     tasksData[taskId].taskStatus = status;
+
+//     // Update UI after drop
+//     populateTaskLists(tasksData);
+
+//     // Update the task's status in the Firebase database
+//     const taskRef = taskFormDb.child(taskId);
+//     taskRef.update({ taskStatus: status }).catch((error) => {
+//       showToast("Error updating task status:", error);
+//     });
+//   } else {
+//     showToast("Invalid task ID");
+//   }
+// }
+
+
 function drop(event, status) {
   event.preventDefault();
   const taskId = event.dataTransfer.getData("text/plain");
 
   if (taskId) {
-    // Update the task's status in the tasksData object
-    tasksData[taskId].taskStatus = status;
+      // Check if the drop position is within the visible area of the page
+      const dropY = event.clientY;
+      const windowHeight = window.innerHeight;
+      const scrollY = window.scrollY;
 
-    // Update UI after drop
-    populateTaskLists(tasksData);
+      if (dropY + scrollY + 50 < windowHeight) {
+          // Update the task's status in the tasksData object
+          tasksData[taskId].taskStatus = status;
 
-    // Update the task's status in the Firebase database
-    const taskRef = taskFormDb.child(taskId);
-    taskRef.update({ taskStatus: status }).catch((error) => {
-      showToast("Error updating task status:", error);
-    });
+          // Update UI after drop
+          populateTaskLists(tasksData);
+
+          // Update the task's status in the Firebase database
+          const taskRef = taskFormDb.child(taskId);
+          taskRef.update({ taskStatus: status }).catch((error) => {
+              showToast("Error updating task status:", error);
+          });
+      } else {
+          showToast("Task cannot be dropped here. Scroll up to drop.");
+      }
   } else {
-    showToast("Invalid task ID");
+      showToast("Invalid task ID");
   }
 }
