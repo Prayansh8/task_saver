@@ -1,16 +1,5 @@
 //  Detele Task
 
-function createDeleteButton(task) {
-  const deleteButton = document.createElement("button");
-  deleteButton.className = "delete-button";
-  deleteButton.innerHTML = '<i class="fas fa-trash"></i>';
-  deleteButton.addEventListener("click", (event) => {
-    event.stopPropagation();
-    deleteTask(task.id);
-  });
-  return deleteButton;
-}
-
 function deleteTask(taskId) {
   const db = firebase.database();
   const ref = db.ref("tasks"); // Replace with the path to your data node
@@ -26,18 +15,18 @@ function deleteTask(taskId) {
     });
 }
 
-// Edit Task
+// // Edit Task
 
-function createEditButton(task) {
-  const editButton = document.createElement("button");
-  editButton.className = "edit-button";
-  editButton.innerHTML = '<i class="fas fa-edit"></i>';
-  editButton.addEventListener("click", (event) => {
-    event.stopPropagation();
-    openEditTaskModal(task);
-  });
-  return editButton;
-}
+// function createEditButton(task) {
+//   const editButton = document.createElement("button");
+//   editButton.className = "edit-button";
+//   editButton.innerHTML = '<i class="fas fa-edit"></i>';
+//   editButton.addEventListener("click", (event) => {
+//     event.stopPropagation();
+//     openEditTaskModal(task);
+//   });
+//   return editButton;
+// }
 
 // Function to get task data by taskId from Firebase
 function getTaskById(taskId) {
@@ -146,6 +135,15 @@ function openTaskModalBySee(taskId) {
     // Make the modal visible
     modal.style.display = "block";
   }
-  
 
-  
+// Function to close see-task-modal
+function closeSeeTaskModal() {
+  const modal = document.getElementById("see-task-modal");
+  modal.style.display = "none"; // Hide the modal
+}
+
+const seeTaskModalCloseButton = document.getElementById("see-task-modal-close-button");
+
+seeTaskModalCloseButton.addEventListener("click", () => {
+  closeSeeTaskModal();
+});

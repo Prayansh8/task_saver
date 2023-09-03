@@ -40,7 +40,6 @@ h1 {
 
 .task-list-item {
   margin: 10px 0;
-  padding: 10px;
   background-color: #f4f4f4;
   border-radius: 5px;
   cursor: pointer;
@@ -386,6 +385,7 @@ button[type="submit"]:hover {
 
 .title-container {
   width: 80%;
+  padding: 15px;
 }
 
 .button-container {
@@ -433,7 +433,6 @@ button[type="submit"]:hover {
 .red-text:hover {
   color: rgb(0, 160, 168);
 }
-
 
 @media only screen and (max-width: 767px) {
   .footer {

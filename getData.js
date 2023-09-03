@@ -19,13 +19,15 @@ function populateTaskLists(tasksData) {
       if (user && task.userId === user.email && task.taskStatus === status) {
         const taskItem = document.createElement("li");
         taskItem.className = "task-list-item";
-        taskItem.addEventListener("click", () => {
-          openTaskModalBySee(taskId); // Pass the taskId of the clicked task
-        });
+        
 
         // Create a container for the task title
         const titleContainer = document.createElement("div");
         titleContainer.className = "title-container";
+        titleContainer.addEventListener("click", (event) => {
+          event.preventDefault();
+          openTaskModalBySee(taskId); // Pass the taskId of the clicked task
+        });
 
         // Create a task title element
         const taskTitle = document.createElement("span");
@@ -44,7 +46,7 @@ function populateTaskLists(tasksData) {
         editButton.addEventListener("click", (event) => {
           event.preventDefault();
           openEditTaskModal(taskId);
-        }); // Implement openEditTaskModal
+        });
 
         // Create a delete button with Font Awesome icon
         const deleteButton = document.createElement("button");

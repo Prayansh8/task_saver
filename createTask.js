@@ -17,6 +17,7 @@ function submitForm(e) {
     saveTaskData(userId, taskTitle, taskDescription, taskStatus)
       .then(() => {
         closeTaskModal();
+        resetFormFields();
       })
       .catch((error) => {
         console.error("Error saving task data:", error);
@@ -27,6 +28,14 @@ function submitForm(e) {
     showToast("No user is signed in, Please signed first!");
   }
 }
+
+// Add this function to reset form fields
+function resetFormFields() {
+  document.getElementById("task-title").value = "";
+  document.getElementById("task-description").value = "";
+  // You may also reset other form fields if needed
+}
+
 
 function createTaskElement(title, description) {
   const taskElement = document.createElement("li");
