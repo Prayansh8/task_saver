@@ -380,7 +380,8 @@ button[type="submit"]:hover {
 }
 
 .mainContTaskGroup {
-  padding: 2vh;
+  padding: 2vh 0 8vh;
+  overflow: auto;
 }
 
 .title-container {
@@ -423,7 +424,7 @@ button[type="submit"]:hover {
   position: fixed;
   bottom: 0;
   width: 100%;
-  font-size: 20px;
+  font-size: 16px;
 }
 
 /* CSS for the red text */
