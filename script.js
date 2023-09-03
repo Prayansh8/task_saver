@@ -15,19 +15,6 @@ function deleteTask(taskId) {
     });
 }
 
-// // Edit Task
-
-// function createEditButton(task) {
-//   const editButton = document.createElement("button");
-//   editButton.className = "edit-button";
-//   editButton.innerHTML = '<i class="fas fa-edit"></i>';
-//   editButton.addEventListener("click", (event) => {
-//     event.stopPropagation();
-//     openEditTaskModal(task);
-//   });
-//   return editButton;
-// }
-
 // Function to get task data by taskId from Firebase
 function getTaskById(taskId) {
   const db = firebase.database();
@@ -117,24 +104,23 @@ function updateTask(taskId, updatedTask) {
     });
 }
 
-
 function openTaskModalBySee(taskId) {
-    const modal = document.getElementById("see-task-modal");
-    const modalTitle = modal.querySelector("#modal-title");
-    const modalDescription = modal.querySelector("#modal-description");
-    const modalStatus = modal.querySelector("#modal-status");
-  
-    // You can use taskId to fetch the relevant task details from tasksData
-    const task = tasksData[taskId];
-  
-    // Set the modal content based on the task
-    modalTitle.textContent = task.taskTitle;
-    modalDescription.textContent = task.taskDescription;
-    modalStatus.textContent = task.taskStatus;
-  
-    // Make the modal visible
-    modal.style.display = "block";
-  }
+  const modal = document.getElementById("see-task-modal");
+  const modalTitle = modal.querySelector("#modal-title");
+  const modalDescription = modal.querySelector("#modal-description");
+  const modalStatus = modal.querySelector("#modal-status");
+
+  // You can use taskId to fetch the relevant task details from tasksData
+  const task = tasksData[taskId];
+
+  // Set the modal content based on the task
+  modalTitle.textContent = task.taskTitle;
+  modalDescription.textContent = task.taskDescription;
+  modalStatus.textContent = task.taskStatus;
+
+  // Make the modal visible
+  modal.style.display = "block";
+}
 
 // Function to close see-task-modal
 function closeSeeTaskModal() {
@@ -142,7 +128,9 @@ function closeSeeTaskModal() {
   modal.style.display = "none"; // Hide the modal
 }
 
-const seeTaskModalCloseButton = document.getElementById("see-task-modal-close-button");
+const seeTaskModalCloseButton = document.getElementById(
+  "see-task-modal-close-button"
+);
 
 seeTaskModalCloseButton.addEventListener("click", () => {
   closeSeeTaskModal();
