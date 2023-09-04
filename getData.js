@@ -97,33 +97,6 @@ function allowDrop(event) {
   event.preventDefault();
 }
 
-// function drop(event, status) {
-//   event.preventDefault();
-//   const taskId = event.dataTransfer.getData("text/plain");
-
-//   if (taskId) {
-//     // Update the task's status in the tasksData object
-//     tasksData[taskId].taskStatus = status;
-
-//     // Update UI after drop
-//     populateTaskLists(tasksData);
-
-//     // Update the task's status in the Firebase database
-//     const taskRef = taskFormDb.child(taskId);
-//     taskRef.update({ taskStatus: status }).catch((error) => {
-//       showToast("Error updating task status:", error);
-//     });
-//   } else {
-//     showToast("Invalid task ID");
-//   }
-// }
-
-
-
-// ..........
-
-let scrollInterval; // Variable to store the scrolling interval
-
 function drop(event, status) {
   event.preventDefault();
   const taskId = event.dataTransfer.getData("text/plain");
@@ -140,39 +113,7 @@ function drop(event, status) {
     taskRef.update({ taskStatus: status }).catch((error) => {
       showToast("Error updating task status:", error);
     });
-
-    // Additional action after dropping a task item
-    // For example, you can display a success message
-    showToast("Task moved to " + status);
-
-    // Clear any existing scroll interval
-    clearInterval(scrollInterval);
-
-    // Calculate the scroll threshold (adjust as needed)
-    const scrollThreshold = 50;
-    const screenHeight = window.innerHeight;
-    const cursorPosition = event.clientY;
-
-    if (cursorPosition <= scrollThreshold) {
-      // Scroll up
-      scrollInterval = setInterval(() => {
-        window.scrollBy(0, -10); // Adjust the scroll amount as needed
-      }, 10);
-    } else if (cursorPosition >= screenHeight - scrollThreshold) {
-      // Scroll down
-      scrollInterval = setInterval(() => {
-        window.scrollBy(0, 10); // Adjust the scroll amount as needed
-      }, 10);
-    } else {
-      // If cursor is not near top or bottom, stop scrolling
-      clearInterval(scrollInterval);
-    }
   } else {
     showToast("Invalid task ID");
   }
 }
-
-// Stop scrolling when the drag operation ends
-document.addEventListener("dragend", () => {
-  clearInterval(scrollInterval);
-});
