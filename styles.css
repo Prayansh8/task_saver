@@ -394,8 +394,15 @@ button[type="submit"]:hover {
   width: 20%;
 }
 
+.listData{
+  height: 72vh;
+}
+
 /* Media query for screens smaller than 768px */
 @media screen and (max-width: 768px) {
+  .listData{
+    height: 80vh;
+  }
   .form-container {
     padding: 20px 10px;
     box-shadow: none;
@@ -422,10 +429,11 @@ button[type="submit"]:hover {
   background-color: #333;
   color: white;
   padding: 15px 10px;
-  position: fixed;
+  position: unset;
   bottom: 0;
-  width: 100%;
   font-size: 16px;
+  margin: 0 auto 0;
+  top: 90vh;
 }
 
 /* CSS for the red text */
