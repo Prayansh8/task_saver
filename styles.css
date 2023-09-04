@@ -383,7 +383,6 @@ button[type="submit"]:hover {
 .mainContTaskGroup {
   padding: 2vh 0 8vh;
   overflow: auto;
-  height: 66vh;
 }
 
 .title-container {
@@ -397,10 +396,6 @@ button[type="submit"]:hover {
 
 /* Media query for screens smaller than 768px */
 @media screen and (max-width: 768px) {
-  .mainContTaskGroup {
-    height: 76vh;
-  }
-
   .form-container {
     padding: 20px 10px;
     box-shadow: none;
