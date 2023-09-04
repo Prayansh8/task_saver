@@ -82,43 +82,45 @@
       </div>
     </div>
     <div class="mainContTaskGroup">
-      <div
-        id="todo"
-        class="task-group"
-        ondrop="drop(event, 'ToDo')"
-        ondragover="allowDrop(event)"
-      >
-        <h2>To Do</h2>
-        <ul id="todo-list" class="task-list"></ul>
-        <button class="create-task-button" onclick="openTaskModal('ToDo')">
-          Create Task
-        </button>
-      </div>
+      <div>
+        <div
+          id="todo"
+          class="task-group"
+          ondrop="drop(event, 'ToDo')"
+          ondragover="allowDrop(event)"
+        >
+          <h2>To Do</h2>
+          <ul id="todo-list" class="task-list"></ul>
+          <button class="create-task-button" onclick="openTaskModal('ToDo')">
+            Create Task
+          </button>
+        </div>
 
-      <div
-        id="doing"
-        class="task-group"
-        ondrop="drop(event, 'Doing')"
-        ondragover="allowDrop(event)"
-      >
-        <h2>Doing</h2>
-        <ul id="doing-list" class="task-list"></ul>
-        <button class="create-task-button" onclick="openTaskModal('Doing')">
-          Create Task
-        </button>
-      </div>
+        <div
+          id="doing"
+          class="task-group"
+          ondrop="drop(event, 'Doing')"
+          ondragover="allowDrop(event)"
+        >
+          <h2>Doing</h2>
+          <ul id="doing-list" class="task-list"></ul>
+          <button class="create-task-button" onclick="openTaskModal('Doing')">
+            Create Task
+          </button>
+        </div>
 
-      <div
-        id="done"
-        class="task-group"
-        ondrop="drop(event, 'Done')"
-        ondragover="allowDrop(event)"
-      >
-        <h2>Done</h2>
-        <ul id="done-list" class="task-list"></ul>
-        <button class="create-task-button" onclick="openTaskModal('Done')">
-          Create Task
-        </button>
+        <div
+          id="done"
+          class="task-group"
+          ondrop="drop(event, 'Done')"
+          ondragover="allowDrop(event)"
+        >
+          <h2>Done</h2>
+          <ul id="done-list" class="task-list"></ul>
+          <button class="create-task-button" onclick="openTaskModal('Done')">
+            Create Task
+          </button>
+        </div>
       </div>
 
       <div id="task-modal" class="modal">

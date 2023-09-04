@@ -97,6 +97,27 @@ function allowDrop(event) {
   event.preventDefault();
 }
 
+// function drop(event, status) {
+//   event.preventDefault();
+//   const taskId = event.dataTransfer.getData("text/plain");
+
+//   if (taskId) {
+//     // Update the task's status in the tasksData object
+//     tasksData[taskId].taskStatus = status;
+
+//     // Update UI after drop
+//     populateTaskLists(tasksData);
+
+//     // Update the task's status in the Firebase database
+//     const taskRef = taskFormDb.child(taskId);
+//     taskRef.update({ taskStatus: status }).catch((error) => {
+//       showToast("Error updating task status:", error);
+//     });
+//   } else {
+//     showToast("Invalid task ID");
+//   }
+// }
+
 function drop(event, status) {
   event.preventDefault();
   const taskId = event.dataTransfer.getData("text/plain");
@@ -113,6 +134,20 @@ function drop(event, status) {
     taskRef.update({ taskStatus: status }).catch((error) => {
       showToast("Error updating task status:", error);
     });
+
+    // Additional action after dropping a task item
+    // For example, you can display a success message
+    showToast("Task moved to " + status);
+
+    // Check if the cursor is close to the bottom of the page
+    const scrollThreshold = 50; // Adjust this value as needed
+    const screenHeight = window.innerHeight;
+    const cursorPosition = event.clientY;
+
+    if (cursorPosition >= screenHeight - scrollThreshold) {
+      // Scroll the page down by a certain amount
+      window.scrollBy(0, 50); // You can adjust the scroll amount
+    }
   } else {
     showToast("Invalid task ID");
   }
