@@ -21,6 +21,9 @@ h1 {
   margin: 10px;
   transition: transform 0.3s;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  justify-content: space-between;
+  overflow-x: scroll;
+  overflow-y: scroll;
 }
 
 .task-group:hover {
@@ -36,6 +39,8 @@ h1 {
 .task-list {
   list-style-type: none;
   padding: 0;
+  overflow-x: scroll;
+  overflow-y: scroll;
 }
 
 .task-list-item {
@@ -442,6 +447,7 @@ button[type="submit"]:hover {
   }
 }
 
-#task-description, #edit-task-description{
+#task-description,
+#edit-task-description {
   height: 100px;
 }
