@@ -118,6 +118,12 @@ function allowDrop(event) {
 //   }
 // }
 
+
+
+// ..........
+
+let scrollInterval; // Variable to store the scrolling interval
+
 function drop(event, status) {
   event.preventDefault();
   const taskId = event.dataTransfer.getData("text/plain");
@@ -139,16 +145,34 @@ function drop(event, status) {
     // For example, you can display a success message
     showToast("Task moved to " + status);
 
-    // Check if the cursor is close to the bottom of the page
-    const scrollThreshold = 50; // Adjust this value as needed
+    // Clear any existing scroll interval
+    clearInterval(scrollInterval);
+
+    // Calculate the scroll threshold (adjust as needed)
+    const scrollThreshold = 50;
     const screenHeight = window.innerHeight;
     const cursorPosition = event.clientY;
 
-    if (cursorPosition >= screenHeight - scrollThreshold) {
-      // Scroll the page down by a certain amount
-      window.scrollBy(0, 50); // You can adjust the scroll amount
+    if (cursorPosition <= scrollThreshold) {
+      // Scroll up
+      scrollInterval = setInterval(() => {
+        window.scrollBy(0, -10); // Adjust the scroll amount as needed
+      }, 10);
+    } else if (cursorPosition >= screenHeight - scrollThreshold) {
+      // Scroll down
+      scrollInterval = setInterval(() => {
+        window.scrollBy(0, 10); // Adjust the scroll amount as needed
+      }, 10);
+    } else {
+      // If cursor is not near top or bottom, stop scrolling
+      clearInterval(scrollInterval);
     }
   } else {
     showToast("Invalid task ID");
   }
 }
+
+// Stop scrolling when the drag operation ends
+document.addEventListener("dragend", () => {
+  clearInterval(scrollInterval);
+});
